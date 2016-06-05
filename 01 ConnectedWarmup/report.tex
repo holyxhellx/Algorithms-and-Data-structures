@@ -1,0 +1,42 @@
+\documentclass{scrartcl}
+\usepackage{amsmath,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{ragged2e}
+\title{Connected Components Warmup - Report}
+
+\begin{document}
+\maketitle
+
+\section{Report: Connected Components Warmup}
+
+Report Group AB 
+
+\centering
+Adrian Brink,\\
+Asger Pedersen,\\
+Simon Flachs,\\
+Troels M{\o}ller
+\justify
+
+\subsection{Results}
+
+\begin{tabular}{ll}
+
+  \toprule
+  input file & 0 connected to 1? \\
+  \midrule
+  {\tt tinyUF.txt} & Yes \\
+  {\tt mediumUF.txt} & No \\
+  {\tt largeUF.txt} & Yes \\
+  \bottomrule
+\end{tabular}
+
+\subsection{Methods}
+
+For the union--find data structure we used WeightedQuickUnionUF.
+We tried running it with QuickFindUF but it took too long on the large while and hence we changed to WeightedQuickUnionUF.
+
+\end{document}

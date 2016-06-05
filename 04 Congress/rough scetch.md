@@ -1,0 +1,4 @@
+Rough scetch:
+Read the entire input file into a priority queue that contains two fields (number of remaining residents, state name and seats received) one by one and ensure that it is sorted by number of remaining residents. After that write a while loop that cycles until all seats have been distributed (just a normal counter). every round take the top most element and remove it, then deduct the constant from it and assign one seat to the seats received property. then add the element back to the priority queue.
+
+this fully depends on the time taken by the queue. I will run it n times (depending on the number of seats, that's the while loop). and the inside of the while loop is just removing and adding from the queue. speed of queue + number of states. I need one while loop to read whole input list and that is bound by the number of states. and then run the other while loop n times for the number of seats. That gives me (m+n)log m.

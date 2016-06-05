@@ -1,0 +1,138 @@
+N = 100
+T: 100
+Giant mean: 71.5
+Giant stddev: 5.885266658050732
+Nonisolated mean: 264.14
+Nonisolated stddev: 64.69602894781227
+Connected mean: 264.69
+Connected stddev: 64.07061997073498
+
+real	0m0.113s
+user	0m0.132s
+sys	0m0.032s
+
+
+N = 1000
+T: 100
+Giant mean: 694.88
+Giant stddev: 16.684402684222558
+Nonisolated mean: 3820.6
+Nonisolated stddev: 603.964210592621
+Connected mean: 3826.09
+Connected stddev: 597.8796895122907
+
+real	0m0.175s
+user	0m0.296s
+sys	0m0.036s
+
+
+N = 10000
+T: 100
+Giant mean: 6923.85
+Giant stddev: 57.82302763823878
+Nonisolated mean: 48657.92
+Nonisolated stddev: 6218.957174395857
+Connected mean: 48657.92
+Connected stddev: 6218.957174395857
+
+real	0m0.483s
+user	0m0.668s
+sys	0m0.044s
+
+
+N = 100000
+T: 100
+Giant mean: 69318.88
+Giant stddev: 156.0987954450448
+Nonisolated mean: 615114.23
+Nonisolated stddev: 66177.13683023448
+Connected mean: 615114.23
+Connected stddev: 66177.13683023448
+
+real	0m5.611s
+user	0m5.788s
+sys	0m0.104s
+
+
+N = 1000000
+T: 10
+Giant mean: 693326.6
+Giant stddev: 701.1029723070483
+Nonisolated mean: 6898503.7
+Nonisolated stddev: 488484.5548182779
+Connected mean: 6898503.7
+Connected stddev: 488484.5548182779
+
+real	0m11.129s
+user	0m12.068s
+sys	0m0.192s
+
+
+N = 10000000
+T: 10
+Giant mean: 6931611.2
+Giant stddev: 1716.2421999499047
+Nonisolated mean: 8.39870302E7
+Nonisolated stddev: 4814046.5236449195
+Connected mean: 8.39870302E7
+Connected stddev: 4814046.5236449195
+
+real	4m2.106s
+user	5m27.392s
+sys	0m2.332s
+
+# Changing the definition of a giant component.
+## Alpha = 0.01
+T: 100
+N: 100000
+Giant mean: 49005.36
+Giant stddev: 964.396870399507
+Nonisolated mean: 601377.19
+Nonisolated stddev: 51585.90114560314
+Connected mean: 601377.19
+Connected stddev: 51585.90114560314
+java GiantBook 100 100000  4.89s user 0.12s system 104% cpu 4.799 total
+
+## Alpha = 0.1
+T: 100
+N: 100000
+Giant mean: 52735.85
+Giant stddev: 491.6772032769286
+Nonisolated mean: 589719.22
+Nonisolated stddev: 52613.434486413855
+Connected mean: 589719.22
+Connected stddev: 52613.434486413855
+java GiantBook 100 100000  4.75s user 0.12s system 105% cpu 4.618 total
+
+## Alpha = 0.5
+T: 100
+N: 100000
+Giant mean: 69301.92
+Giant stddev: 183.3700613348302
+Nonisolated mean: 615208.55
+Nonisolated stddev: 74459.92268197406
+Connected mean: 615208.55
+Connected stddev: 74459.92268197406
+java GiantBook 100 100000  5.02s user 0.12s system 103% cpu 4.951 total
+
+## Alpha = 0.9
+T: 100
+N: 100000
+Giant mean: 127931.9
+Giant stddev: 381.1592233376408
+Nonisolated mean: 601567.46
+Nonisolated stddev: 56943.71068515243
+Connected mean: 601567.46
+Connected stddev: 56943.71068515243
+java GiantBook 100 100000  4.80s user 0.11s system 105% cpu 4.646 total
+
+## Alpha = 0.99
+T: 100
+N: 100000
+Giant mean: 232284.48
+Giant stddev: 1311.408514737209
+Nonisolated mean: 611073.74
+Nonisolated stddev: 66111.43980586449
+Connected mean: 611073.74
+Connected stddev: 66111.43980586449
+java GiantBook 100 100000  4.99s user 0.10s system 103% cpu 4.904 total

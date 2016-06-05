@@ -1,0 +1,88 @@
+\documentclass{tufte-handout}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{amsmath,amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{ragged2e}
+
+\title{Giantbook - Report}
+
+\begin{document}
+
+\maketitle
+\begin{center} 
+Report Group AB: \\
+Adrian Brink,\\
+Asger Pedersen,\\
+Simon Flachs,\\
+Troels M{\o}ller
+\end{center}
+
+\section{Results}
+
+The following table summarises our results.
+It shows the average number of random connections needed before the emergence of the giant component (``giant''), the disappearance of the last isolated individual (``no isolated''), and when the network becomes connected (``connect'').
+
+\medskip
+\begin{fullwidth}
+\begin{tabular}{rcccccccc}\toprule
+$N$ & $T$ & giant & (stddev) & non-isolated & (stddev) & connected & (stddev)\\\midrule
+
+100 & 100 &         	\num{7.15e+01} & \num{5.9e+00}	& \num{2.64e+02} & \num{6.46e+01} &\num{2.64e+02} & \num{6.40e+01} \\ 
+1000 & 100 &       	\num{6.94e+02} & \num{1.66e+01} 	& \num{3.82e+03} & \num{6.04e+02} & \num{3.83e+03} & \num{5.97e+02} \\
+10000 & 100 &     	\num{6.92e+03} & \num{5.75e+01}	& \num{4.87e+04} & \num{6.22e+03} & \num{4.87e+04} & \num{6.22e+03} \\
+100000 & 100 &   	\num{6.93e+04} & \num{1.56e+02}	& \num{6.15e+05} & \num{6.62e+04} & \num{6.15e+05} & \num{6.62e+04} \\
+1000000 & 10 & 	\num{6.93e+05} & \num{7.01e+02}	& \num{6.89e+06} & \num{4.88e+05} & \num{6.89e+06} & \num{4.88e+05} \\
+10000000 & 10 & 	\num{6.93e+06} & \num{1.72e+03}	& \num{8.39e+07} & \num{4.81e+06} & \num{8.39e+07} & \num{4.81e+06} \\
+\bottomrule
+\end{tabular}
+\end{fullwidth}
+
+\medskip\noindent
+Our main findings are the following:
+The first thing that happens is that the giant component emerges, which happens at a time linear to $N$.
+\justify
+Perhaps surprisingly, two of the events seem to happen simultaneously, namely non-isolated and connected, which happen at time linear to $N$.
+
+\subsection{Implementation details}
+
+We have based our union-find data type on {WeightedQuickUnionUF\tt .java} from Sedgewick and Wayne: {\em Algorihthms, 4th ed.}, Addison-Wesley (2011). We added two attributes to MyUnionFind:
+\begin{itemize}
+\item a maxCompenentSize
+\item a set called isolated, which contains all the isolated sites
+\end{itemize}
+In the constructor the isolated set is populated with all the sites, since at initialization they are all isolated. Also The max component size is set to 1, since at initialization none of the sites are connected.
+in the union method, we update the max component size if the newly created component is larger than the current max component size.
+Also both of the sites that have been united are now removed from the isolated set, since now neither of these are isolated. \\
+We also added two methods: maxComponentSize() which returns the value of the attribute of the same name and isNonIsolated(), which returns if the set of isolated sites is empty.
+
+Assuming we never run out of memory or heap space, if we would let our algorithm for detecting the emergence of a giant component run for 24 hours, it could compute the answer for $N$ = 46,685,500,000 \\
+
+To calculate this we modified the algorithm to break when the giant component emerges, and measured it again. \\
+
+\begin{tabular}{ll}
+  \toprule
+  N: & Time (sec.) \\
+  \midrule
+  100 & 0.261 \\
+  1000 & 0.146 \\
+  10000 & 0.161 \\
+  100000 & 0.220 \\
+  1000000 & 1.023 \\
+  10000000 & 18.5 \\
+  \bottomrule
+\end{tabular}\\ \\
+
+Linear regression: y = 540340.8 x + 22706.49 \\
+
+		y = 540340.8 * 86400 + 22706.49 = 46,685,500,000 
+
+\subsection{Discussion}
+
+We defined the giant component to have size at least $\alpha N$ for $\alpha = \frac{1}{2}$. The choice of constant is important; choosing 0.01 and 0.99 changes the experiment completely because
+the average number of operations for giant component to emerge change from 49005.36 to 232284.48 for  $N$ = 100000 and  $T$ = 100. 
+
+\end{document}  
